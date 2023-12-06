@@ -1,0 +1,15 @@
+{
+  "env": {
+      "browser": true,
+      "es2021": true
+  },
+  "extends": ["airbnb", "plugin:styled-components-a11y/recommended"],
+  "plugins": ["styled-components-a11y"],
+  "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+  },
+  "rules": {
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  }
+}
