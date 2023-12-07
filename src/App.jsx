@@ -1,15 +1,19 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import StyledButton from './Styled';
+import { GlobalStyle, ContentWrapper } from './globalStyles';
+import Header from './Components/Header/Header';
 
 function App() {
   return (
-    <>
-      <StyledButton>Hello</StyledButton>
+    <ContentWrapper>
+      <GlobalStyle />
+      <Header />
       <Outlet />
-    </>
+    </ContentWrapper>
 
   );
 }
+
+// Some text
 
 export default App;
