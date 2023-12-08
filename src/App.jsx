@@ -17,6 +17,4 @@ function App() {
   );
 }
 
-// Some text
-
 export default App;
