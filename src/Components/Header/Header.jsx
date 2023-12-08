@@ -4,11 +4,16 @@ import {
 } from './StyledHeader';
 
 function Header() {
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+    }
+  };
   return (
     <HeaderSection>
       <HeaderListWrapper>
         <HeaderListItem>
-          <HeaderNavLink to="/" exact="true">
+          <HeaderNavLink to="/" exact="true" onKeyDown={(e) => handleKeyDown(e)}>
             <StepText
               fontWeight="700"
               color="white"
@@ -21,7 +26,7 @@ function Header() {
         </HeaderListItem>
 
         <HeaderListItem>
-          <HeaderNavLink to="/step/2">
+          <HeaderNavLink to="/step/2" onKeyDown={(e) => handleKeyDown(e)}>
             <StepText
               fontWeight="700"
               color="white"
@@ -34,7 +39,7 @@ function Header() {
         </HeaderListItem>
 
         <HeaderListItem>
-          <HeaderNavLink to="/step/3">
+          <HeaderNavLink to="/step/3" onKeyDown={(e) => handleKeyDown(e)}>
             <StepText
               fontWeight="700"
               color="white"
@@ -47,7 +52,7 @@ function Header() {
         </HeaderListItem>
 
         <HeaderListItem>
-          <HeaderNavLink to="/step/4">
+          <HeaderNavLink to="/step/4" onKeyDown={(e) => handleKeyDown(e)}>
             <StepText
               fontWeight="700"
               color="white"

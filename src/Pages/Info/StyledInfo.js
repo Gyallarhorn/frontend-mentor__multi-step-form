@@ -1,5 +1,13 @@
 import styled from 'styled-components';
-import { Text } from '../../globalStyles';
+import { Section, Text } from '../../globalStyles';
+
+const InfoSection = styled(Section)`
+    margin: 0 0 47px;
+
+    @media (width >= 980px) {
+        margin: 0 0 92px;
+    }
+`;
 
 const InfoLabel = styled(Text).attrs({ as: 'label' })`
     display: block;
@@ -39,7 +47,6 @@ const Input = styled.input`
     border-radius: 4px;
 
     &::placeholder {
-        /* font-size: 15px; */
         color: var(--secondary-text-color);
     }
 
@@ -57,4 +64,6 @@ const Input = styled.input`
     }
 `;
 
-export { InfoLabel, Input, InputWrapper };
+export {
+  InfoLabel, Input, InputWrapper, InfoSection,
+};

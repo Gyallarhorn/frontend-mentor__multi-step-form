@@ -42,6 +42,7 @@ const GlobalStyle = createGlobalStyle`
         --border-color: #d6d9e6;
         --active-border-color: #483eff;
         --error-color: #ee374a;
+        --button-hover-color: #164a8a;
     }
 
     *,
@@ -102,12 +103,14 @@ const Container = styled.div`
 const ContentWrapper = styled.div`
     display: grid;
     grid-template-rows: min-content 1fr min-content;
+    height: 100%;
 
     @media (width >= 980px) {
         grid-template-rows: auto;
         grid-template-columns: 274px 1fr;
         column-gap: 100px;
         max-width: 940px;
+        height: auto;
         padding: 16px 100px 16px 16px;
         background-color: white;
         border-radius: 15px;
@@ -166,6 +169,44 @@ const Section = styled.section`
     }
 `;
 
+const Button = styled.button`
+    padding: 12px 16px;
+    font-family: Ubuntu, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    background-color: var(--primary-text-color);
+    border: none;
+    border-radius: 4px;
+    transition: background-color .3s ease;
+
+    &:hover {
+        background-color: var(--button-hover-color);
+    }
+
+    @media (width >= 980px) {
+        padding: 14px 24px;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+`;
+
+const BackButton = styled(Button)`
+    color: var(--secondary-text-color);
+    background: none;
+    transition: color .3s ease;
+
+    &:hover {
+        color: var(--primary-text-color);
+        background: none;
+    }
+
+    @media (width >= 980px) {
+        padding: 14px 24px 14px 0;
+    }
+`;
+
 export {
-  GlobalStyle, Container, Text, ContentWrapper, CardWrapper, Title, Section,
+  GlobalStyle, Container, Text, ContentWrapper, CardWrapper, Title, Section, Button, BackButton,
 };

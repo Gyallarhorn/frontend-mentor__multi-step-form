@@ -9,6 +9,7 @@ const HeaderSection = styled.header`
     background-size: cover;
 
     @media (width >= 980px) {
+        grid-row: 1 / 3 ;
         min-height: auto;
         padding: 40px 32px;
         background: url('/assets/img/bg-sidebar-desktop.svg') center no-repeat;
