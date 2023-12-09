@@ -10,6 +10,7 @@ const dataTemplate = {
   email: '',
   number: '',
   plan: '',
+  isYear: false,
   addOns: [],
 };
 

@@ -46,14 +46,16 @@ const Input = styled.input`
     color: var(--primary-text-color);
     border: 1px solid var(--border-color);
     border-radius: 4px;
-    transition: opacity .5s ease;
+    transition: border-color .5s ease;
 
     &::placeholder {
         color: var(--secondary-text-color);
+        transition: opacity .5s ease;
     }
 
-    &:hover::placeholder {
-        opacity: 0.7;
+    &:hover::placeholder,
+    &:focus::placeholder {
+        opacity: 0.5;
     }
 
     &:focus {

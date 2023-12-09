@@ -15,10 +15,10 @@ function Header() {
         <HeaderListItem>
           <HeaderNavLink to="/" exact="true" onKeyDown={(e) => handleKeyDown(e)}>
             <StepText
-              fontWeight="700"
-              color="white"
-              letterSpacing="true"
-              transform="true"
+              $fontWeight="700"
+              $color="white"
+              $letterSpacing="true"
+              $transform="true"
             >
               your info
             </StepText>
@@ -26,12 +26,12 @@ function Header() {
         </HeaderListItem>
 
         <HeaderListItem>
-          <HeaderNavLink to="/step/2" onKeyDown={(e) => handleKeyDown(e)}>
+          <HeaderNavLink to="/plan" onKeyDown={(e) => handleKeyDown(e)}>
             <StepText
-              fontWeight="700"
-              color="white"
-              letterSpacing="true"
-              transform="true"
+              $fontWeight="700"
+              $color="white"
+              $letterSpacing="true"
+              $transform="true"
             >
               select plan
             </StepText>
@@ -41,10 +41,10 @@ function Header() {
         <HeaderListItem>
           <HeaderNavLink to="/step/3" onKeyDown={(e) => handleKeyDown(e)}>
             <StepText
-              fontWeight="700"
-              color="white"
-              letterSpacing="true"
-              transform="true"
+              $fontWeight="700"
+              $color="white"
+              $letterSpacing="true"
+              $transform="true"
             >
               add-ons
             </StepText>
@@ -54,10 +54,10 @@ function Header() {
         <HeaderListItem>
           <HeaderNavLink to="/step/4" onKeyDown={(e) => handleKeyDown(e)}>
             <StepText
-              fontWeight="700"
-              color="white"
-              letterSpacing="true"
-              transform="true"
+              $fontWeight="700"
+              $color="white"
+              $letterSpacing="true"
+              $transform="true"
             >
               summary
             </StepText>

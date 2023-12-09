@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import {
   CardWrapper, Container, Text, Title,
 } from '../../globalStyles';
@@ -16,8 +15,6 @@ function Info() {
     mail: { value: data.email, isEmpty: false, isError: false },
     number: { value: data.number, isEmpty: false, isError: false },
   });
-
-  const navigate = useNavigate();
 
   const handleInputChange = (fieldName, e) => {
     setPersonalData((prevData) => ({
@@ -81,7 +78,7 @@ function Info() {
     return (!regExp.test(value) && value);
   });
 
-  const isValid = () => {
+  const isValid = (cb) => {
     if (checkEmpyInput() && checkInputValidity()) {
       setData((prevData) => ({
         ...prevData,
@@ -89,7 +86,7 @@ function Info() {
         email: personalData.mail.value.replace(/\s+/g, ' ').trim(),
         number: personalData.number.value.replace(/\s+/g, '').trim(),
       }));
-      navigate('/plan');
+      cb();
     }
 
     if (!checkEmpyInput()) {
@@ -110,12 +107,12 @@ function Info() {
       <InfoSection>
         <Container>
           <CardWrapper>
-            <Title margin="0 0 9px 0">Personal Info</Title>
+            <Title $margin="0 0 9px 0">Personal Info</Title>
             <Text
               as="p"
-              lineHeight="22px"
-              margin="0 0 22px 0"
-              fontSize="16px"
+              $lineHeight="25px"
+              $margin="0 0 22px 0"
+              $fontSize="16px"
             >
               Please provide your name, email address, and phone number.
             </Text>
