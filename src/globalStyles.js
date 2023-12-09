@@ -43,6 +43,7 @@ const GlobalStyle = createGlobalStyle`
         --active-border-color: #483eff;
         --error-color: #ee374a;
         --button-hover-color: #164a8a;
+        --tertiary-background-color: #f8f9ff;
     }
 
     *,
@@ -119,13 +120,14 @@ const ContentWrapper = styled.div`
 `;
 
 const Text = styled.span`
-    margin: ${({ margin }) => (margin || '')};
-    font-size: ${({ fontSize }) => (fontSize || '14px')};
-    font-weight: ${({ fontWeight }) => (fontWeight || '400')};
-    line-height: ${({ lineHeight }) => (lineHeight || 'normal')};
-    color: ${({ color }) => (color || 'var(--secondary-text-color)')};
-    text-transform: ${({ transform }) => (transform ? 'uppercase' : '')};
-    letter-spacing: ${({ letterSpacing }) => (letterSpacing ? '1px' : '')};
+    margin: ${({ $margin }) => ($margin || '')};
+    font-size: ${({ $fontSize }) => ($fontSize || '14px')};
+    font-weight: ${({ $fontWeight }) => ($fontWeight || '400')};
+    line-height: ${({ $lineHeight }) => ($lineHeight || 'normal')};
+    color: ${({ $color }) => ($color || 'var(--secondary-text-color)')};
+    text-transform: ${({ $transform }) => ($transform ? 'uppercase' : '')};
+    letter-spacing: ${({ $letterSpacing }) => ($letterSpacing ? '1px' : '')};
+    word-wrap: break-word;
 
     @media (width >= 980px) {
         margin: 0 0 35px;
@@ -148,9 +150,9 @@ const CardWrapper = styled.div`
 `;
 
 const Title = styled.h1`
-    margin: ${({ margin }) => (margin || '0')};
-    font-size: ${({ fontSize }) => (fontSize || '24px')};
-    font-weight: ${({ fontWeight }) => (fontWeight || '700')};
+    margin: ${({ $margin }) => ($margin || '0')};
+    font-size: ${({ $fontSize }) => ($fontSize || '24px')};
+    font-weight: ${({ $fontWeight }) => ($fontWeight || '700')};
     line-height: normal;
     color: var(--primary-text-color);
 
@@ -202,12 +204,14 @@ const BackButton = styled(Button)`
     background: none;
     transition: color .5s ease;
 
-    &:hover {
+    &:hover,
+    &:focus {
         color: var(--primary-text-color);
         background: none;
     }
 
     &:focus {
+        background: none;
         outline: none;
     }
 

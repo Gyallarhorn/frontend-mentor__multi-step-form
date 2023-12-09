@@ -75,8 +75,6 @@ const HeaderNavLink = styled(NavLink)`
             display: flex;
         }
     }
-       
-    
 `;
 
 const StepText = styled(Text)`
