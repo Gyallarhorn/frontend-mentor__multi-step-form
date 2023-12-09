@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
     @font-face {
@@ -179,10 +179,15 @@ const Button = styled.button`
     background-color: var(--primary-text-color);
     border: none;
     border-radius: 4px;
-    transition: background-color .3s ease;
+    transition: background-color .5s ease;
 
-    &:hover {
+    &:hover,
+    &:focus {
         background-color: var(--button-hover-color);
+    }
+
+    &:focus {
+        outline: none;
     }
 
     @media (width >= 980px) {
@@ -195,11 +200,15 @@ const Button = styled.button`
 const BackButton = styled(Button)`
     color: var(--secondary-text-color);
     background: none;
-    transition: color .3s ease;
+    transition: color .5s ease;
 
     &:hover {
         color: var(--primary-text-color);
         background: none;
+    }
+
+    &:focus {
+        outline: none;
     }
 
     @media (width >= 980px) {
@@ -207,6 +216,64 @@ const BackButton = styled(Button)`
     }
 `;
 
+const shake = keyframes`
+    0% {
+        opacity: 0;
+        transform: translateX(0);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateX(5px);
+    }
+
+    20% {
+        transform: translateX(-5px);
+    }
+
+    30% {
+        transform: translateX(5px);
+    }
+
+    40% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    60% {
+        transform: translateX(-5px);
+    }
+
+    70% {
+        transform: translateX(5px);
+    }
+
+    80% {
+        transform: translateX(-5px);
+    }
+
+    90% {
+        transform: translateX(5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+`;
+
 export {
-  GlobalStyle, Container, Text, ContentWrapper, CardWrapper, Title, Section, Button, BackButton,
+  GlobalStyle,
+  Container,
+  Text,
+  ContentWrapper,
+  CardWrapper,
+  Title,
+  Section,
+  Button,
+  BackButton,
+  shake,
 };

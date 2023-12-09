@@ -89,6 +89,7 @@ const StepText = styled(Text)`
         font-size: 12px;
         font-weight: 400;
         color: var(--tertiary-text-color);
+        letter-spacing: 0;
         content: 'step ' counter(headerCount);
     }
 
