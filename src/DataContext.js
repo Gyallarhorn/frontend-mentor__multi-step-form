@@ -19,7 +19,7 @@ const getData = () => {
     localStorage.setItem('MultiData', JSON.stringify(dataTemplate));
     return dataTemplate;
   }
-  return dataTemplate;
+  return data;
 };
 
 function DataProvider({ children }) {

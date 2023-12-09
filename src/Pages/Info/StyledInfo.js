@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Section, Text } from '../../globalStyles';
+import { Section, Text, shake } from '../../globalStyles';
 
 const InfoSection = styled(Section)`
     margin: 0 0 47px;
@@ -42,9 +42,11 @@ const Input = styled.input`
     font-family: Ubuntu, sans-serif;
     font-size: 15px;
     font-weight: 500;
+    line-height: 25px;
     color: var(--primary-text-color);
     border: 1px solid var(--border-color);
     border-radius: 4px;
+    transition: opacity .5s ease;
 
     &::placeholder {
         color: var(--secondary-text-color);
@@ -59,11 +61,40 @@ const Input = styled.input`
         outline: none;
     }
 
+    &.error {
+        border-color: var(--error-color);
+    }
+
     @media (width >= 980px) {
         font-size: 16px; 
+        border-radius: 8px;
+    }
+`;
+
+const InvalidText = styled.span`
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: var(--error-color);
+    opacity: 0;
+
+    &.empty-field {
+        animation: ${shake} 1.5s ease forwards;
+    }
+
+    &.error-text {
+        animation: ${shake} 1.5s ease forwards;
+    }
+
+    @media (width >= 980px) {
+        font-size: 14px; 
     }
 `;
 
 export {
-  InfoLabel, Input, InputWrapper, InfoSection,
+  InfoLabel, Input, InputWrapper, InfoSection, InvalidText,
 };

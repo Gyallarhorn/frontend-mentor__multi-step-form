@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 import { FooterContainer, FooterWrapper } from './StyledFooter';
 import { BackButton, Button } from '../../globalStyles';
 
 function Footer({ onButtonClick }) {
+  const location = useLocation();
+
+  const isBack = () => (location.pathname !== '/');
+
   return (
     <FooterWrapper>
       <FooterContainer>
-        <Button type="button">Nex Step</Button>
-        <BackButton type="button" onClick={onButtonClick}>Go Back</BackButton>
+        <Button type="button" onClick={onButtonClick}>Next Step</Button>
+        {isBack() ? <BackButton type="button">Go Back</BackButton> : ''}
       </FooterContainer>
     </FooterWrapper>
   );
