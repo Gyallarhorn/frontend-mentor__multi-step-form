@@ -1,17 +1,30 @@
 import styled from 'styled-components';
 import { Button, Section, Text } from '../../globalStyles';
+import { InvalidText } from '../Info/StyledInfo';
 
 const PlanSection = styled(Section)`
     margin: 0;
+
+    @media (width >= 980px) {
+        margin: 0 0 122px;
+    }
 `;
 
 const PlanInputsList = styled.ul`
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 12px;
     padding: 0;
     margin: 0 0 24px;
     list-style: none;
+
+    @media (width >= 980px) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin: 0 0 32px;
+    }
 `;
 
 const PlanInputsItem = styled.label`
@@ -33,11 +46,31 @@ const PlanInputsItem = styled.label`
         background-color: var(--tertiary-background-color);
         outline: none;
     }
+
+    @media (width >= 980px) {
+        grid-template-rows: 40px 1fr auto;
+        grid-template-columns: auto;
+        gap: 7px;
+        align-items: stretch;
+        min-width: 138px;
+        height: 100%;;
+        padding: 20px 16px 16px;
+    }
 `;
 
 const Radio = styled.input`
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    white-space: nowrap;
+    border: 0;
 
+    &:focus + label,
     &:checked + label {
         border-color: var(--active-border-color);
     }
@@ -50,6 +83,10 @@ const InputIcon = styled.span`
     height: 40px;
     background: url(${({ $url }) => $url}) center no-repeat;
     background-size: contain;
+
+    @media (width >= 980px) {
+        grid-row: 1 / 2;
+    }
 `;
 
 const PlanPrice = styled(Text)`
@@ -62,7 +99,7 @@ const PlanPrice = styled(Text)`
 
 const PlanItemTitle = styled(Text)`
     @media (width >= 980px) {
-        margin: 0;
+        margin: 32px 0 0;
         line-height: normal;
     }
 `;
@@ -123,6 +160,10 @@ const ChangePriceToggle = styled.button`
     }
 `;
 
+const InvalidPlanText = styled(InvalidText)`
+    top: -20px;
+`;
+
 export {
   PlanSection,
   PlanInputsList,
@@ -134,4 +175,5 @@ export {
   ChangePriceWrapper,
   ChangePriceButton,
   ChangePriceToggle,
+  InvalidPlanText,
 };

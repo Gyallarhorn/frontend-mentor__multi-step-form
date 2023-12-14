@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import Info from './Pages/Info/Info';
 import Plan from './Pages/Plan/Plan';
+import AddOns from './Pages/AddOns/AddOns';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: '/plan',
         element: <Plan />,
+      },
+      {
+        path: '/addOns',
+        element: <AddOns />,
       },
     ],
   },

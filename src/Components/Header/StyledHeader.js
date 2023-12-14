@@ -13,6 +13,7 @@ const HeaderSection = styled.header`
         min-height: auto;
         padding: 40px 32px;
         background: url('/assets/img/bg-sidebar-desktop.svg') center no-repeat;
+        background-size: cover;
         border-radius: 10px;
     }
 `;

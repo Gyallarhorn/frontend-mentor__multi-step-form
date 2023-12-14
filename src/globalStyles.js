@@ -110,8 +110,9 @@ const ContentWrapper = styled.div`
         grid-template-rows: auto;
         grid-template-columns: 274px 1fr;
         column-gap: 100px;
-        max-width: 940px;
+        width: 940px;
         height: auto;
+        min-height: 600px;
         padding: 16px 100px 16px 16px;
         background-color: white;
         border-radius: 15px;
