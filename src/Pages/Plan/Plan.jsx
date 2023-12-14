@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   CardWrapper, Container, Text, Title,
 } from '../../globalStyles';
@@ -6,16 +6,40 @@ import {
   ChangePriceButton,
   ChangePriceToggle,
   ChangePriceWrapper,
-  InputIcon, PlanInputsItem, PlanInputsList, PlanItemTitle, PlanPrice, PlanSection, Radio,
+  InputIcon,
+  InvalidPlanText,
+  PlanInputsItem,
+  PlanInputsList,
+  PlanItemTitle,
+  PlanPrice,
+  PlanSection,
+  Radio,
 } from './StyledPlan';
 import price from '../../price';
 import arcade from '../../assets/img/icon-arcade.svg';
 import advanced from '../../assets/img/icon-advanced.svg';
 import pro from '../../assets/img/icon-pro.svg';
 import Footer from '../../Components/Footer/Footer';
+import { DataContext } from '../../DataContext';
 
 function Plan() {
-  const [isYear, setYear] = useState(false);
+  const { setData } = useContext(DataContext);
+  const [year, setYear] = useState(false);
+  const [choosenPlan, setPlan] = useState('');
+  const [isError, setError] = useState(false);
+
+  const handleInputClick = (e) => {
+    if (e.target.classList.contains('plan-radio')) {
+      setPlan(e.target.value);
+    }
+  };
+
+  const handleKeyDownClick = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      console.log(e.target);
+      setPlan(e.target.getAttribute('for'));
+    }
+  };
 
   const handleButtonClick = (e) => {
     if (!(e.target && e.target.closest('.btn'))) {
@@ -30,13 +54,22 @@ function Plan() {
         setYear(true);
         break;
       default:
-        setYear(!isYear);
+        setYear(!year);
         break;
     }
   };
 
-  const HandleNextPageButtonClick = () => {
-    console.log('Я работаю');
+  const handleNextPageButtonClick = (cb) => {
+    if (choosenPlan === '') {
+      setError(true);
+    } else {
+      setData((prevData) => ({
+        ...prevData,
+        plan: choosenPlan,
+        isYear: year,
+      }));
+      cb();
+    }
   };
 
   return (
@@ -53,10 +86,14 @@ function Plan() {
             >
               You have the option of monthly or yearly billing.
             </Text>
-            <PlanInputsList>
+            <PlanInputsList
+              onClick={(e) => handleInputClick(e)}
+              onKeyDown={(e) => handleKeyDownClick(e)}
+            >
+              <InvalidPlanText as="li" className={`${isError && 'error-text'}`}>Please, choose your plan</InvalidPlanText>
               <li>
-                <Radio type="radio" id="arcade" name="plan" value="arcade" />
-                <PlanInputsItem htmlFor="arcade" tabIndex={0}>
+                <Radio className="plan-radio" type="radio" id="arcade" name="plan" value="arcade" />
+                <PlanInputsItem htmlFor="arcade">
                   <InputIcon $url={arcade} />
                   <PlanItemTitle
                     $color="var(--primary-text-color)"
@@ -65,12 +102,12 @@ function Plan() {
                   >
                     Arcade
                   </PlanItemTitle>
-                  <PlanPrice $lineHeight="20px">{isYear ? `$${price.arcade * 10}/yr` : `$${price.arcade}/mo`}</PlanPrice>
+                  <PlanPrice $lineHeight="20px">{year ? `$${price.arcade * 10}/yr` : `$${price.arcade}/mo`}</PlanPrice>
                 </PlanInputsItem>
               </li>
               <li>
-                <Radio type="radio" id="advanced" name="plan" value="advanced" />
-                <PlanInputsItem htmlFor="advanced" tabIndex={0}>
+                <Radio className="plan-radio" type="radio" id="advanced" name="plan" value="advanced" />
+                <PlanInputsItem htmlFor="advanced">
                   <InputIcon $url={advanced} />
                   <PlanItemTitle
                     $color="var(--primary-text-color)"
@@ -79,12 +116,12 @@ function Plan() {
                   >
                     Advanced
                   </PlanItemTitle>
-                  <PlanPrice $lineHeight="20px">{isYear ? `$${price.advanced * 10}/yr` : `$${price.advanced}/mo`}</PlanPrice>
+                  <PlanPrice $lineHeight="20px">{year ? `$${price.advanced * 10}/yr` : `$${price.advanced}/mo`}</PlanPrice>
                 </PlanInputsItem>
               </li>
               <li>
-                <Radio type="radio" id="pro" name="plan" value="pro" />
-                <PlanInputsItem htmlFor="pro" tabIndex={0}>
+                <Radio className="plan-radio" type="radio" id="pro" name="plan" value="pro" />
+                <PlanInputsItem htmlFor="pro">
                   <InputIcon $url={pro} />
                   <PlanItemTitle
                     $color="var(--primary-text-color)"
@@ -93,19 +130,19 @@ function Plan() {
                   >
                     Pro
                   </PlanItemTitle>
-                  <PlanPrice $lineHeight="20px">{isYear ? `$${price.pro * 10}/yr` : `$${price.pro}/mo`}</PlanPrice>
+                  <PlanPrice $lineHeight="20px">{year ? `$${price.pro * 10}/yr` : `$${price.pro}/mo`}</PlanPrice>
                 </PlanInputsItem>
               </li>
             </PlanInputsList>
             <ChangePriceWrapper onClick={handleButtonClick}>
-              <ChangePriceButton className={`btn ${!isYear ? 'active' : ''}`}>Monthly</ChangePriceButton>
-              <ChangePriceToggle className={`btn ${isYear ? 'year' : ''}`} />
-              <ChangePriceButton className={`btn ${isYear ? 'active' : ''}`}>Yearly</ChangePriceButton>
+              <ChangePriceButton className={`btn ${!year ? 'active' : ''}`}>Monthly</ChangePriceButton>
+              <ChangePriceToggle className={`btn ${year ? 'year' : ''}`} />
+              <ChangePriceButton className={`btn ${year ? 'active' : ''}`}>Yearly</ChangePriceButton>
             </ChangePriceWrapper>
           </CardWrapper>
         </Container>
       </PlanSection>
-      <Footer onButtonClick={HandleNextPageButtonClick} />
+      <Footer onButtonClick={handleNextPageButtonClick} />
     </>
   );
 }
