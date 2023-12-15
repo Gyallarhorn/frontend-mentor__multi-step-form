@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { Container } from '../../globalStyles';
 
 const FooterWrapper = styled.footer`
-    background-color: white;;
+    align-self: end;
+    background-color: white;
 `;
 
 const FooterContainer = styled(Container)`

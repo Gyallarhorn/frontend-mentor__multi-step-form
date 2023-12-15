@@ -5,7 +5,7 @@ const InfoSection = styled(Section)`
     margin: 0 0 47px;
 
     @media (width >= 980px) {
-        margin: 0 0 92px;
+        margin: 0 0 50px;
     }
 `;
 

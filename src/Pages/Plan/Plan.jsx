@@ -13,7 +13,7 @@ import {
   PlanItemTitle,
   PlanPrice,
   PlanSection,
-  Radio,
+  Input,
 } from './StyledPlan';
 import price from '../../price';
 import arcade from '../../assets/img/icon-arcade.svg';
@@ -31,13 +31,6 @@ function Plan() {
   const handleInputClick = (e) => {
     if (e.target.classList.contains('plan-radio')) {
       setPlan(e.target.value);
-    }
-  };
-
-  const handleKeyDownClick = (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      console.log(e.target);
-      setPlan(e.target.getAttribute('for'));
     }
   };
 
@@ -88,11 +81,10 @@ function Plan() {
             </Text>
             <PlanInputsList
               onClick={(e) => handleInputClick(e)}
-              onKeyDown={(e) => handleKeyDownClick(e)}
             >
               <InvalidPlanText as="li" className={`${isError && 'error-text'}`}>Please, choose your plan</InvalidPlanText>
               <li>
-                <Radio className="plan-radio" type="radio" id="arcade" name="plan" value="arcade" />
+                <Input className="plan-radio" type="radio" id="arcade" name="plan" value="arcade" />
                 <PlanInputsItem htmlFor="arcade">
                   <InputIcon $url={arcade} />
                   <PlanItemTitle
@@ -106,7 +98,7 @@ function Plan() {
                 </PlanInputsItem>
               </li>
               <li>
-                <Radio className="plan-radio" type="radio" id="advanced" name="plan" value="advanced" />
+                <Input className="plan-radio" type="radio" id="advanced" name="plan" value="advanced" />
                 <PlanInputsItem htmlFor="advanced">
                   <InputIcon $url={advanced} />
                   <PlanItemTitle
@@ -120,7 +112,7 @@ function Plan() {
                 </PlanInputsItem>
               </li>
               <li>
-                <Radio className="plan-radio" type="radio" id="pro" name="plan" value="pro" />
+                <Input className="plan-radio" type="radio" id="pro" name="plan" value="pro" />
                 <PlanInputsItem htmlFor="pro">
                   <InputIcon $url={pro} />
                   <PlanItemTitle
