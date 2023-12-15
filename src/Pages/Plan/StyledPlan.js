@@ -6,7 +6,7 @@ const PlanSection = styled(Section)`
     margin: 0;
 
     @media (width >= 980px) {
-        margin: 0 0 122px;
+        margin: 0 0 50px;
     }
 `;
 
@@ -58,7 +58,7 @@ const PlanInputsItem = styled.label`
     }
 `;
 
-const Radio = styled.input`
+const Input = styled.input`
     position: absolute;
     width: 1px;
     height: 1px;
@@ -70,7 +70,11 @@ const Radio = styled.input`
     white-space: nowrap;
     border: 0;
 
-    &:focus + label,
+    &:checked + label,
+    &:focus + label {
+        background-color: var(--tertiary-background-color);
+    }
+
     &:checked + label {
         border-color: var(--active-border-color);
     }
@@ -168,7 +172,7 @@ export {
   PlanSection,
   PlanInputsList,
   PlanInputsItem,
-  Radio,
+  Input,
   InputIcon,
   PlanPrice,
   PlanItemTitle,

@@ -47,7 +47,7 @@ function Header() {
         </HeaderListItem>
 
         <HeaderListItem>
-          <HeaderNavLink tabIndex={-1} to="/step/4">
+          <HeaderNavLink tabIndex={-1} to="/finishing">
             <StepText
               $fontWeight="700"
               $color="white"

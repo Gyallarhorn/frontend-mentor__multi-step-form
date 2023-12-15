@@ -138,7 +138,7 @@ const Text = styled.span`
 `;
 
 const CardWrapper = styled.div`
-    padding: 24px 32px;
+    padding: 32px 24px;
     background-color: white;
     border-radius: 10px;
     box-shadow: var(--box-shadow);
