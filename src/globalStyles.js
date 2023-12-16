@@ -45,6 +45,7 @@ const GlobalStyle = createGlobalStyle`
         --button-hover-color: #164a8a;
         --tertiary-background-color: #f8f9ff;
         --submit-button-hover: #928cff;
+        --background-trasparent-color: rgb(0 0 0 / 10%);
     }
 
     *,

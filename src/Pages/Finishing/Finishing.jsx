@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useContext } from 'react';
 import {
   AddOn,
@@ -8,6 +9,11 @@ import {
   ChoosenElements,
   FinishingPrice,
   FinishingSection,
+  Modal,
+  ModalBody,
+  ModalIcon,
+  ModalLink,
+  ModalText,
   TopSection,
   TopSectionTitle,
   TotalPrice,
@@ -15,6 +21,7 @@ import {
   TotalSection,
 } from './StyledFinishing';
 import {
+  Button,
   CardWrapper, Container, Text, Title,
 } from '../../globalStyles';
 import Footer from '../../Components/Footer/Footer';
@@ -33,15 +40,20 @@ function Finishing() {
   } else {
     planPrice = '$0';
   }
-  console.log(addOns);
-  console.log(plan);
-  console.log(planPrice);
-
-  console.log(data);
 
   return (
-
     <>
+      <Modal role="dialog" aria-modal="true">
+        <Container>
+          <ModalBody>
+            <ModalIcon>🫠</ModalIcon>
+            <ModalText as="p">
+              Stay worry, don&#39;t calm! Just kidding, pal. You probably forgot to provide your details or choose a plan. Let&#39;s go back to the main page and try again.
+            </ModalText>
+            <ModalLink to="/">Go back</ModalLink>
+          </ModalBody>
+        </Container>
+      </Modal>
       <FinishingSection>
         <Container>
           <CardWrapper>
