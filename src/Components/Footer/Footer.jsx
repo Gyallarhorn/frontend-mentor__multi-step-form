@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { FooterContainer, FooterWrapper } from './StyledFooter';
+import { FooterContainer, FooterWrapper, SubmitButton } from './StyledFooter';
 import { BackButton, Button } from '../../globalStyles';
 
 function Footer({ onButtonClick }) {
@@ -28,7 +28,7 @@ function Footer({ onButtonClick }) {
   return (
     <FooterWrapper>
       <FooterContainer>
-        <Button type="button" onClick={handleNextPageButtonClick}>Next Step</Button>
+        {location.pathname === '/finishing' ? <SubmitButton type="button">Confirm</SubmitButton> : <Button type="button" onClick={handleNextPageButtonClick}>Next Step</Button>}
         {isBack() ? <BackButton type="button" onClick={returnOnPreviousPage}>Go Back</BackButton> : ''}
       </FooterContainer>
     </FooterWrapper>

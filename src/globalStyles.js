@@ -44,6 +44,7 @@ const GlobalStyle = createGlobalStyle`
         --error-color: #ee374a;
         --button-hover-color: #164a8a;
         --tertiary-background-color: #f8f9ff;
+        --submit-button-hover: #928cff;
     }
 
     *,
