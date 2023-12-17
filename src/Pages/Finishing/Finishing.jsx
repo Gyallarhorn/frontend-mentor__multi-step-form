@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React, { useContext, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import {
   AddOn,
   AddOnPrice,
@@ -50,11 +51,31 @@ function Finishing() {
 
   const checkEmptyData = () => Object.keys(data).some((elem) => data[elem] === '');
 
-  const handleConfirmButtonClick = () => {
+  const handleConfirmButtonClick = async () => {
     if (checkEmptyData()) {
       setError(true);
+      return;
     }
-    setConfirm(true);
+
+    const templateParams = {
+      to_name: 'Tim',
+      from_name: data.name,
+      email: data.email,
+      phone: data.number,
+      plan: data.plan,
+      choosenAddOns: addOns.length > 0 ? [...addOns] : 'None',
+      isYear: data.isYear,
+      price: countTotal(),
+    };
+
+    try {
+      const response = await emailjs.send(process.env.SERVICE_ID, process.env.TEMPLATE_ID, templateParams, process.env.PUBLIC_KEY);
+      if (response.status === 200) {
+        setConfirm(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -68,7 +89,7 @@ function Finishing() {
               <ModalText as="p">
                 Stay worry, don&#39;t calm! Just kidding, pal. You probably forgot to provide your details or choose a plan. Let&#39;s go back to the main page and try again.
               </ModalText>
-              <ModalLink to="/">Go back</ModalLink>
+              <ModalLink to="/" tabIndex={`${isError ? 0 : -1}`}>Go back</ModalLink>
             </ModalBody>
           </Container>
         </Modal>
