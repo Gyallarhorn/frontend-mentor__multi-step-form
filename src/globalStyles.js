@@ -69,6 +69,7 @@ const GlobalStyle = createGlobalStyle`
         height: 100%;
         padding: 0;
         margin: 0;
+        overflow: hidden;
         font-family: Ubuntu, sans-serif;
         font-size: 16px;
         font-style: normal;

@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   AddOn,
   AddOnPrice,
@@ -21,15 +21,22 @@ import {
   TotalSection,
 } from './StyledFinishing';
 import {
-  Button,
-  CardWrapper, Container, Text, Title,
+  CardWrapper,
+  Container,
+  Text,
+  Title,
 } from '../../globalStyles';
 import Footer from '../../Components/Footer/Footer';
 import { DataContext } from '../../DataContext';
 import price from '../../price';
+import Confirm from '../../Components/Confirm/Confirm';
 
 function Finishing() {
   const { data, countTotal } = useContext(DataContext);
+  const [isError, setError] = useState(false);
+  const [isConfirm, setConfirm] = useState(true);
+
+  console.log(data);
 
   const { addOns } = data;
   const plan = `${data.plan ? data.plan.substring(0, 1).toUpperCase() + data.plan.substring(1) : 'None'} (${data.isYear ? 'Yearly' : 'Monthly'})`;
@@ -41,45 +48,56 @@ function Finishing() {
     planPrice = '$0';
   }
 
+  const checkEmptyData = () => Object.keys(data).some((elem) => data[elem] === '');
+
+  const handleConfirmButtonClick = () => {
+    if (checkEmptyData()) {
+      setError(true);
+    }
+    setConfirm(true);
+  };
+
   return (
     <>
-      <Modal role="dialog" aria-modal="true">
-        <Container>
-          <ModalBody>
-            <ModalIcon>🫠</ModalIcon>
-            <ModalText as="p">
-              Stay worry, don&#39;t calm! Just kidding, pal. You probably forgot to provide your details or choose a plan. Let&#39;s go back to the main page and try again.
-            </ModalText>
-            <ModalLink to="/">Go back</ModalLink>
-          </ModalBody>
-        </Container>
-      </Modal>
-      <FinishingSection>
-        <Container>
-          <CardWrapper>
-            <Title $margin="0 0 9px 0">Finishing up</Title>
-            <Text
-              as="p"
-              $lineHeight="25px"
-              $margin="0 0 22px 0"
-              $fontSize="16px"
-            >
-              Double-check everything looks OK before confirming.
-            </Text>
-            <ChoosenElements>
-              <TopSection>
-                <TopSectionTitle
-                  $fontWeight="500"
-                  $color="var(--primary-text-color)"
-                  as="h2"
-                  $margin="0 0 3px 0"
-                >
-                  {`${data.plan ? plan : plan.substring(0, plan.indexOf('(') - 1)}`}
-                </TopSectionTitle>
-                <ChangePlanLink to="/plan">Change</ChangePlanLink>
-                <FinishingPrice>{planPrice}</FinishingPrice>
-              </TopSection>
-              {addOns.length > 0
+      {!isConfirm && (
+      <>
+        <Modal role="dialog" aria-modal="true" className={`${isError && 'active-modal'}`}>
+          <Container>
+            <ModalBody>
+              <ModalIcon>🫠</ModalIcon>
+              <ModalText as="p">
+                Stay worry, don&#39;t calm! Just kidding, pal. You probably forgot to provide your details or choose a plan. Let&#39;s go back to the main page and try again.
+              </ModalText>
+              <ModalLink to="/">Go back</ModalLink>
+            </ModalBody>
+          </Container>
+        </Modal>
+        <FinishingSection>
+          <Container>
+            <CardWrapper>
+              <Title $margin="0 0 9px 0">Finishing up</Title>
+              <Text
+                as="p"
+                $lineHeight="25px"
+                $margin="0 0 22px 0"
+                $fontSize="16px"
+              >
+                Double-check everything looks OK before confirming.
+              </Text>
+              <ChoosenElements>
+                <TopSection>
+                  <TopSectionTitle
+                    $fontWeight="500"
+                    $color="var(--primary-text-color)"
+                    as="h2"
+                    $margin="0 0 3px 0"
+                  >
+                    {`${data.plan ? plan : plan.substring(0, plan.indexOf('(') - 1)}`}
+                  </TopSectionTitle>
+                  <ChangePlanLink to="/plan">Change</ChangePlanLink>
+                  <FinishingPrice>{planPrice}</FinishingPrice>
+                </TopSection>
+                {addOns.length > 0
             && (
             <AddOnsList>
               {addOns.map((elem) => (
@@ -90,15 +108,18 @@ function Finishing() {
               ))}
             </AddOnsList>
             )}
-            </ChoosenElements>
-            <TotalSection>
-              <TotalPriceTitle>{data.isYear ? 'Total (per year)' : 'Total (per month)'}</TotalPriceTitle>
-              <TotalPrice>{countTotal()}</TotalPrice>
-            </TotalSection>
-          </CardWrapper>
-        </Container>
-      </FinishingSection>
-      <Footer />
+              </ChoosenElements>
+              <TotalSection>
+                <TotalPriceTitle>{data.isYear ? 'Total (per year)' : 'Total (per month)'}</TotalPriceTitle>
+                <TotalPrice>{countTotal()}</TotalPrice>
+              </TotalSection>
+            </CardWrapper>
+          </Container>
+        </FinishingSection>
+        <Footer onButtonClick={handleConfirmButtonClick} />
+      </>
+      )}
+      {isConfirm && <Confirm />}
     </>
   );
 }

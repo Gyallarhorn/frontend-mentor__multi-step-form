@@ -130,9 +130,22 @@ const Modal = styled.div`
     justify-content: center;
     width: 100%;
     height: 100dvh;
+    pointer-events: none;
+    visibility: hidden;
     background-color: var(--background-trasparent-color);
     backdrop-filter: blur(10px);
-    transition: background-color 0.3s ease;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+
+    &.active-modal {
+        pointer-events: all;
+        visibility: visible;
+        opacity: 1;
+    }
+
+    &.active-modal div {
+        transform: translateY(0);
+    }
 `;
 
 const ModalBody = styled.div`
@@ -145,6 +158,8 @@ const ModalBody = styled.div`
     background-color: white;
     border-radius: 10px;
     box-shadow: var(--box-shadow);
+    transition: transform 0.7s ease;
+    transform: translateY(50px);
 `;
 
 const ModalIcon = styled.span`
