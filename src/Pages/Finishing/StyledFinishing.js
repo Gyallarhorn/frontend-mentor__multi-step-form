@@ -13,20 +13,30 @@ const ChoosenElements = styled.div`
     margin: 0 0 24px;
     background-color: var(--tertiary-background-color);
     border-radius: 8px;
+
+    @media (width >= 980px) {
+        padding: 16px 24px 24px;
+    }
 `;
 
 const TopSection = styled.div`
     display: grid;
     grid-template-rows: auto auto;
     grid-template-columns: 1fr min-content;
+    column-gap: 15px;
     align-items: center;
     padding: 0 0 12px;
+
+    @media (width >= 980px) {
+        padding: 0 0 24px;
+    }
 `;
 
 const TopSectionTitle = styled(Text)`
-    /* @media (width >= 980px) {
-        margin: 0 0 50px;
-    } */
+    @media (width >= 980px) {
+        margin: 0 0 7px;
+        line-height: normal;
+    }
 `;
 
 const ChangePlanLink = styled(Link)`
@@ -37,7 +47,6 @@ const ChangePlanLink = styled(Link)`
     line-height: 20px;
     color: var(--secondary-text-color);
     transition: color .3s ease;
-
 
     &::before {
         position: absolute;
@@ -64,6 +73,10 @@ const FinishingPrice = styled(Text)`
     font-weight: 700;
     line-height: 20px;
     color: var(--primary-text-color);
+
+    @media (width >= 980px) {
+        margin: 0;
+    }
 `;
 
 const AddOnsList = styled.ul`
@@ -85,6 +98,11 @@ const AddOnsList = styled.ul`
         background-color: var(--secondary-text-color);
         opacity: 0.2;
     }
+    
+    @media (width >= 980px) {
+        gap: 16px;
+        padding: 16px 0 0;
+    }
 `;
 
 const AddOnsListItem = styled.li`
@@ -95,11 +113,21 @@ const AddOnsListItem = styled.li`
 
 const AddOn = styled(Text)`
     line-height: 20px;
+
+    @media (width >= 980px) {
+        margin: 0;
+        font-size: 14px;
+    }
 `;
 
 const AddOnPrice = styled(Text)`
     line-height: 20px;
     color: var(--primary-text-color);
+
+    @media (width >= 980px) {
+        margin: 0;
+        font-size: 14px;
+    }
 `;
 
 const TotalSection = styled.div`
@@ -111,6 +139,11 @@ const TotalSection = styled.div`
 
 const TotalPriceTitle = styled(Text)`
     line-height: 20px;
+
+    @media (width >= 980px) {
+        margin: 0;
+        font-size: 14px;
+    }
 `;
 
 const TotalPrice = styled(Text)`
@@ -118,6 +151,11 @@ const TotalPrice = styled(Text)`
     font-weight: 700;
     line-height: 20px;
     color: var(--active-border-color);
+
+    @media (width >= 980px) {
+        margin: 0;
+        font-size: 20px;
+    }
 `;
 
 const Modal = styled.div`

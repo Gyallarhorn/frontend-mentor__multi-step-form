@@ -34,7 +34,7 @@ import Confirm from '../../Components/Confirm/Confirm';
 function Finishing() {
   const { data, countTotal } = useContext(DataContext);
   const [isError, setError] = useState(false);
-  const [isConfirm, setConfirm] = useState(true);
+  const [isConfirm, setConfirm] = useState(false);
 
   console.log(data);
 

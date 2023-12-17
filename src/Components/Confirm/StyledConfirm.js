@@ -5,6 +5,14 @@ import {
 
 const ConfirmSection = styled(Section)`
     margin: 0;
+
+    @media (width >= 980px) {
+        display: flex;
+        flex-direction: column;
+        grid-row: 1 / 3 ;
+        align-items: center;
+        justify-content: center;
+    }
 `;
 
 const ConfirmCardWrapper = styled(CardWrapper)`
@@ -13,6 +21,10 @@ const ConfirmCardWrapper = styled(CardWrapper)`
     align-items: center;
     justify-content: center;
     min-height: 400px;
+
+    @media (width >= 980px) {
+        padding: 0;
+    }
 `;
 
 const ConfirmTitle = styled(Title)`
@@ -31,6 +43,16 @@ const ConfirmTitle = styled(Title)`
         background: url('./assets/img/icon-thank-you.svg') center no-repeat;
         background-size: contain;
         transform: translateX(-50%);
+    }
+
+    @media (width >= 980px) {
+        margin: 0 0 14px;
+
+        &::before { 
+            top: -112px;
+            width: 80px;
+            height: 80px;
+        }
     }
 `;
 
