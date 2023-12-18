@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Container } from '../../globalStyles';
+import { Button, Container } from '../../globalStyles';
 
 const FooterWrapper = styled.footer`
     align-self: end;
@@ -18,4 +18,12 @@ const FooterContainer = styled(Container)`
     }
 `;
 
-export { FooterWrapper, FooterContainer };
+const SubmitButton = styled(Button)`
+    background-color: var(--active-border-color);
+
+    &:hover {
+        background-color: var(--submit-button-hover);
+    }
+`;
+
+export { FooterWrapper, FooterContainer, SubmitButton };

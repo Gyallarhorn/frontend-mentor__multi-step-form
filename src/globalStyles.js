@@ -44,6 +44,8 @@ const GlobalStyle = createGlobalStyle`
         --error-color: #ee374a;
         --button-hover-color: #164a8a;
         --tertiary-background-color: #f8f9ff;
+        --submit-button-hover: #928cff;
+        --background-trasparent-color: rgb(0 0 0 / 10%);
     }
 
     *,
@@ -67,6 +69,7 @@ const GlobalStyle = createGlobalStyle`
         height: 100%;
         padding: 0;
         margin: 0;
+        overflow: hidden;
         font-family: Ubuntu, sans-serif;
         font-size: 16px;
         font-style: normal;
