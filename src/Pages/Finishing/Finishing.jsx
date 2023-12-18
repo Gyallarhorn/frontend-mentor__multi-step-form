@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import {
   AddOn,
@@ -10,11 +10,6 @@ import {
   ChoosenElements,
   FinishingPrice,
   FinishingSection,
-  Modal,
-  ModalBody,
-  ModalIcon,
-  ModalLink,
-  ModalText,
   TopSection,
   TopSectionTitle,
   TotalPrice,
@@ -31,13 +26,17 @@ import Footer from '../../Components/Footer/Footer';
 import { DataContext } from '../../DataContext';
 import price from '../../price';
 import Confirm from '../../Components/Confirm/Confirm';
+import Loader from '../../Components/Loader/Loader';
+import ModalComponent from '../../Components/Modal/Modal';
 
 function Finishing() {
   const { data, countTotal } = useContext(DataContext);
   const [isError, setError] = useState(false);
   const [isConfirm, setConfirm] = useState(false);
-
-  console.log(data);
+  const [loader, setLoader] = useState({
+    isLoading: false,
+    isError: false,
+  });
 
   const { addOns } = data;
   const plan = `${data.plan ? data.plan.substring(0, 1).toUpperCase() + data.plan.substring(1) : 'None'} (${data.isYear ? 'Yearly' : 'Monthly'})`;
@@ -51,48 +50,59 @@ function Finishing() {
 
   const checkEmptyData = () => Object.keys(data).some((elem) => data[elem] === '');
 
-  const handleConfirmButtonClick = async () => {
+  const handleConfirmButtonClick = () => {
     if (checkEmptyData()) {
       setError(true);
       return;
     }
 
-    const templateParams = {
-      to_name: 'Tim',
-      from_name: data.name,
-      email: data.email,
-      phone: data.number,
-      plan: data.plan,
-      choosenAddOns: addOns.length > 0 ? [...addOns] : 'None',
-      isYear: data.isYear,
-      price: countTotal(),
+    setLoader((prevData) => ({
+      ...prevData,
+      isLoading: true,
+    }));
+  };
+
+  useEffect(() => {
+    const sendData = async () => {
+      if (!loader.isLoading) {
+        return;
+      }
+
+      const templateParams = {
+        to_name: 'Tim',
+        from_name: data.name,
+        email: data.email,
+        phone: data.number,
+        plan: `${data.plan} ${planPrice}`,
+        choosenAddOns: addOns.length > 0 ? addOns.map((elem) => (data.isYear ? ` ${elem} $${price[elem] * 10}/yr` : ` ${elem} $${price[elem]}/mo`)) : 'None',
+        isYear: data.isYear,
+        price: countTotal(),
+      };
+
+      try {
+        const response = await emailjs.send(process.env.SERVICE_I, process.env.TEMPLATE_ID, templateParams, process.env.PUBLIC_KEY);
+        if (response.status === 200) {
+          localStorage.removeItem('MultiData');
+          setConfirm(true);
+        }
+      } catch (error) {
+        setLoader((prevData) => ({
+          ...prevData,
+          isError: true,
+          isLoading: false,
+        }));
+      }
     };
 
-    try {
-      const response = await emailjs.send(process.env.SERVICE_ID, process.env.TEMPLATE_ID, templateParams, process.env.PUBLIC_KEY);
-      if (response.status === 200) {
-        setConfirm(true);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    sendData();
+  }, [loader.isLoading]);
 
   return (
     <>
       {!isConfirm && (
       <>
-        <Modal role="dialog" aria-modal="true" className={`${isError && 'active-modal'}`}>
-          <Container>
-            <ModalBody>
-              <ModalIcon>🫠</ModalIcon>
-              <ModalText as="p">
-                Stay worry, don&#39;t calm! Just kidding, pal. You probably forgot to provide your details or choose a plan. Let&#39;s go back to the main page and try again.
-              </ModalText>
-              <ModalLink to="/" tabIndex={`${isError ? 0 : -1}`}>Go back</ModalLink>
-            </ModalBody>
-          </Container>
-        </Modal>
+        <ModalComponent dataError={isError} loaderError={loader.isError} />
+        {loader.isLoading && <Loader />}
         <FinishingSection>
           <Container>
             <CardWrapper>
