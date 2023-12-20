@@ -2,6 +2,10 @@
   "name": "multi-step-form",
   "version": "1.0.0",
   "description": "Responsive React multi-step form with validation",
+  "engines": {
+    "node": "20.9.0",
+    "npm": "10.1.0"
+  },
   "main": "index.js",
   "scripts": {
     "watch": "webpack --watch",
