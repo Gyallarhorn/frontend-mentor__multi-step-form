@@ -130,7 +130,7 @@ function Info() {
                 required
                 onChange={(e) => handleInputChange('name', e)}
                 onFocus={() => handleInputFocus('name')}
-                autoComplete="true"
+                autoComplete
               />
               <InvalidText className={`${personalData.name.isEmpty ? 'empty-field' : ''}`}>This field is&nbsp;required</InvalidText>
               <InvalidText className={`${personalData.name.isError ? 'error-text' : ''}`}>Please provide correct name</InvalidText>
@@ -146,7 +146,7 @@ function Info() {
                 required
                 onChange={(e) => handleInputChange('mail', e)}
                 onFocus={() => handleInputFocus('mail')}
-                autoComplete="true"
+                autoComplete
               />
               <InvalidText className={`${personalData.mail.isEmpty ? 'empty-field' : ''}`}>This field is&nbsp;required</InvalidText>
               <InvalidText className={`${personalData.mail.isError ? 'error-text' : ''}`}>Please provide correct email</InvalidText>
@@ -162,7 +162,7 @@ function Info() {
                 required
                 onChange={(e) => handleNumberInputChange('number', e)}
                 onFocus={() => handleInputFocus('number')}
-                autoComplete="true"
+                autoComplete
               />
               <InvalidText className={`${personalData.number.isEmpty ? 'empty-field' : ''}`}>This field is&nbsp;required</InvalidText>
               <InvalidText className={`${personalData.number.isError ? 'error-text' : ''}`}>Please provide correct number</InvalidText>

@@ -12,7 +12,7 @@ function Header() {
     <HeaderSection>
       <HeaderListWrapper>
         <HeaderListItem>
-          <HeaderNavLink tabIndex={-1} to="/" exact="true">
+          <HeaderNavLink tabIndex={-1} to="/" aria-label="your info">
             <StepText
               $fontWeight="700"
               $color="white"
@@ -25,7 +25,7 @@ function Header() {
         </HeaderListItem>
 
         <HeaderListItem>
-          <HeaderNavLink tabIndex={-1} to="/plan">
+          <HeaderNavLink tabIndex={-1} to="/plan" aria-label="select plan">
             <StepText
               $fontWeight="700"
               $color="white"
@@ -38,7 +38,7 @@ function Header() {
         </HeaderListItem>
 
         <HeaderListItem>
-          <HeaderNavLink tabIndex={-1} to="/addOns">
+          <HeaderNavLink tabIndex={-1} to="/addOns" aria-label="add-ons">
             <StepText
               $fontWeight="700"
               $color="white"
@@ -51,7 +51,7 @@ function Header() {
         </HeaderListItem>
 
         <HeaderListItem>
-          <HeaderNavLink tabIndex={-1} to="/finishing">
+          <HeaderNavLink tabIndex={-1} to="/finishing" aria-label="summary">
             <StepText
               $fontWeight="700"
               $color="white"
