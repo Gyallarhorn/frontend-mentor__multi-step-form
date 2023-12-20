@@ -128,7 +128,7 @@ function Plan() {
             </PlanInputsList>
             <ChangePriceWrapper onClick={handleButtonClick}>
               <ChangePriceButton className={`btn ${!year ? 'active' : ''}`}>Monthly</ChangePriceButton>
-              <ChangePriceToggle className={`btn ${year ? 'year' : ''}`} />
+              <ChangePriceToggle aria-label="toggle plan" className={`btn ${year ? 'year' : ''}`} />
               <ChangePriceButton className={`btn ${year ? 'active' : ''}`}>Yearly</ChangePriceButton>
             </ChangePriceWrapper>
           </CardWrapper>
