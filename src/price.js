@@ -5,7 +5,6 @@ const price = {
   'Online service': 1,
   'Larger storage': 2,
   'Customizable profile': 2,
-  isYear: false,
 };
 
 export default price;

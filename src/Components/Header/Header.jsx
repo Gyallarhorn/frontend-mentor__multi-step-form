@@ -1,6 +1,10 @@
 import React from 'react';
 import {
-  HeaderListWrapper, HeaderSection, HeaderNavLink, HeaderListItem, StepText,
+  HeaderListWrapper,
+  HeaderSection,
+  HeaderNavLink,
+  HeaderListItem,
+  StepText,
 } from './StyledHeader';
 
 function Header() {

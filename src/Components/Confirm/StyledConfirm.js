@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import {
-  CardWrapper, Section, Text, Title,
+  CardWrapper,
+  Section,
+  Text,
+  Title,
 } from '../../globalStyles';
 
 const ConfirmSection = styled(Section)`

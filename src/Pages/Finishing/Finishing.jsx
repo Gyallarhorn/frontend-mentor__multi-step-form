@@ -80,7 +80,7 @@ function Finishing() {
       };
 
       try {
-        const response = await emailjs.send(process.env.SERVICE_I, process.env.TEMPLATE_ID, templateParams, process.env.PUBLIC_KEY);
+        const response = await emailjs.send(process.env.SERVICE_ID, process.env.TEMPLATE_ID, templateParams, process.env.PUBLIC_KEY);
         if (response.status === 200) {
           localStorage.removeItem('MultiData');
           setConfirm(true);
@@ -113,7 +113,7 @@ function Finishing() {
                 $margin="0 0 22px 0"
                 $fontSize="16px"
               >
-                Double-check everything looks OK before confirming.
+                Double-check everything looks&nbsp;OK before confirming.
               </Text>
               <ChoosenElements>
                 <TopSection>

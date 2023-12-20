@@ -1,5 +1,8 @@
 import React, {
-  createContext, useEffect, useMemo, useState,
+  createContext,
+  useEffect,
+  useMemo,
+  useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import price from './price';

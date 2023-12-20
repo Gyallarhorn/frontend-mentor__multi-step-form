@@ -41,7 +41,10 @@ function Info() {
 
   const handleNumberInputChange = (fieldName, e) => {
     const inputValue = e.target.value.replace(/\D/g, '');
-    const formattedValue = `+${inputValue.slice(0, 1)} ${inputValue.slice(1, 4)} ${inputValue.slice(4, 7)} ${inputValue.slice(7, 11)}`;
+    let formattedValue = `+${inputValue.slice(0, 1)} ${inputValue.slice(1, 4)} ${inputValue.slice(4, 7)} ${inputValue.slice(7, 11)}`;
+    if (inputValue.length > 11) {
+      formattedValue = `+${inputValue.slice(0, 2)} ${inputValue.slice(2, 5)} ${inputValue.slice(5, 8)} ${inputValue.slice(8, 12)}`;
+    }
     e.target.value = formattedValue.trim();
     handleInputChange(fieldName, e);
   };
@@ -49,7 +52,7 @@ function Info() {
   const inputRegExp = {
     name: /^[A-Za-z'\s]+$/,
     mail: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-    number: /^\+\d{11}/,
+    number: /^\+\d{11,12}/,
   };
 
   const checkEmpyInput = () => Object.keys(personalData).every((key) => {
@@ -129,7 +132,7 @@ function Info() {
                 onFocus={() => handleInputFocus('name')}
                 autoComplete="true"
               />
-              <InvalidText className={`${personalData.name.isEmpty ? 'empty-field' : ''}`}>This field is required</InvalidText>
+              <InvalidText className={`${personalData.name.isEmpty ? 'empty-field' : ''}`}>This field is&nbsp;required</InvalidText>
               <InvalidText className={`${personalData.name.isError ? 'error-text' : ''}`}>Please provide correct name</InvalidText>
             </InputWrapper>
             <InputWrapper>
@@ -145,7 +148,7 @@ function Info() {
                 onFocus={() => handleInputFocus('mail')}
                 autoComplete="true"
               />
-              <InvalidText className={`${personalData.mail.isEmpty ? 'empty-field' : ''}`}>This field is required</InvalidText>
+              <InvalidText className={`${personalData.mail.isEmpty ? 'empty-field' : ''}`}>This field is&nbsp;required</InvalidText>
               <InvalidText className={`${personalData.mail.isError ? 'error-text' : ''}`}>Please provide correct email</InvalidText>
             </InputWrapper>
             <InputWrapper>
@@ -161,7 +164,7 @@ function Info() {
                 onFocus={() => handleInputFocus('number')}
                 autoComplete="true"
               />
-              <InvalidText className={`${personalData.number.isEmpty ? 'empty-field' : ''}`}>This field is required</InvalidText>
+              <InvalidText className={`${personalData.number.isEmpty ? 'empty-field' : ''}`}>This field is&nbsp;required</InvalidText>
               <InvalidText className={`${personalData.number.isError ? 'error-text' : ''}`}>Please provide correct number</InvalidText>
             </InputWrapper>
           </CardWrapper>

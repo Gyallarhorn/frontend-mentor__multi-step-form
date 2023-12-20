@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 import { Container } from '../../globalStyles';
 import {
   Modal,
-  ModalBody, ModalIcon, ModalLink, ModalText,
+  ModalBody,
+  ModalIcon,
+  ModalLink,
+  ModalText,
 } from './StyledModal';
 
 function ModalComponent({ dataError, loaderError }) {

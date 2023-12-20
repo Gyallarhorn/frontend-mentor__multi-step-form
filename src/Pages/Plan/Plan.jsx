@@ -77,7 +77,7 @@ function Plan() {
               $margin="0 0 22px 0"
               $fontSize="16px"
             >
-              You have the option of monthly or yearly billing.
+              You have the option of&nbsp;monthly or&nbsp;yearly billing.
             </Text>
             <PlanInputsList
               onClick={(e) => handleInputClick(e)}
