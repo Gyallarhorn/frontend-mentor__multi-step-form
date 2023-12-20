@@ -6,12 +6,17 @@ import Info from './Pages/Info/Info';
 import Plan from './Pages/Plan/Plan';
 import AddOns from './Pages/AddOns/AddOns';
 import Finishing from './Pages/Finishing/Finishing';
+import NotFound from './Pages/NotFound/NotFound';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
     children: [
+      {
+        path: '*',
+        element: <NotFound />,
+      },
       {
         path: '/',
         element: <Info />,

@@ -1,10 +1,18 @@
 import React, { useContext, useState } from 'react';
 import {
   AddOnsCheckbox,
-  AddOnsInputPrice, AddOnsInputText, AddOnsInputTitle, AddOnsLabel, AddOnsList, AddOnsSection,
+  AddOnsInputPrice,
+  AddOnsInputText,
+  AddOnsInputTitle,
+  AddOnsLabel,
+  AddOnsList,
+  AddOnsSection,
 } from './StyledAddOns';
 import {
-  CardWrapper, Container, Text, Title,
+  CardWrapper,
+  Container,
+  Text,
+  Title,
 } from '../../globalStyles';
 import { DataContext } from '../../DataContext';
 import price from '../../price';

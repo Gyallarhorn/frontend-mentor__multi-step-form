@@ -1,7 +1,10 @@
 /* eslint-disable max-len */
 import React from 'react';
 import {
-  ConfirmCardWrapper, ConfirmSection, ConfirmText, ConfirmTitle,
+  ConfirmCardWrapper,
+  ConfirmSection,
+  ConfirmText,
+  ConfirmTitle,
 } from './StyledConfirm';
 import { Container } from '../../globalStyles';
 import Fireworks from '../Fireworks/Fireworks';
@@ -14,7 +17,7 @@ function Confirm() {
           <ConfirmCardWrapper>
             <ConfirmTitle>Thank you!</ConfirmTitle>
             <ConfirmText as="p">
-              Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com.
+              Thanks for confirming your subscription! We&nbsp;hope you have fun using our platform. If&nbsp;you ever need support, please feel free to&nbsp;email&nbsp;us at&nbsp;support@loremgaming.com.
             </ConfirmText>
           </ConfirmCardWrapper>
         </Container>
