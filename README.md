@@ -34,6 +34,9 @@ Users are able to:
 - In case of an accidental reboot, all entered data will be saved
 - Send the entered data using EmailJS 
 
+![lighthouse score](https://github.com/Gyallarhorn/frontend-mentor__multi-step-form/blob/master/pictures/lighthouse.png?raw=true)
+![EmailJS answer](https://github.com/Gyallarhorn/frontend-mentor__multi-step-form/blob/master/pictures/email.jpg?raw=true)
+
 ## My process
 
 ### Built with
