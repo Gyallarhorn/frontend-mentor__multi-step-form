@@ -5,8 +5,8 @@ const GlobalStyle = createGlobalStyle`
         font-family: Ubuntu;
         font-style: normal;
         font-weight: 400;
-        src: url('/assets/fonts/Ubuntu-Regular.woff2'),
-             url('/assets/fonts/Ubuntu-Regular.woff');
+        src: url('./assets/fonts/Ubuntu-Regular.woff2'),
+             url('./assets/fonts/Ubuntu-Regular.woff');
         font-display: swap;
     }
 
@@ -14,8 +14,8 @@ const GlobalStyle = createGlobalStyle`
         font-family: Ubuntu;
         font-style: normal;
         font-weight: 500;
-        src: url('/assets/fonts/Ubuntu-Medium.woff2'),
-             url('/assets/fonts/Ubuntu-Medium.woff');
+        src: url('./assets/fonts/Ubuntu-Medium.woff2'),
+             url('./assets/fonts/Ubuntu-Medium.woff');
         font-display: swap;
     }
 
@@ -23,8 +23,8 @@ const GlobalStyle = createGlobalStyle`
         font-family: Ubuntu;
         font-style: normal;
         font-weight: 700;
-        src: url('/assets/fonts/Ubuntu-Bold.woff2'),
-             url('/assets/fonts/Ubuntu-Bold.woff');
+        src: url('./assets/fonts/Ubuntu-Bold.woff2'),
+             url('./assets/fonts/Ubuntu-Bold.woff');
         font-display: swap;
     }
 

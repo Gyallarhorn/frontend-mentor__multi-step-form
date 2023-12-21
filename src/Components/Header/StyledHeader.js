@@ -5,14 +5,14 @@ import { Container, Text } from '../../globalStyles';
 const HeaderSection = styled.header`
     min-height: 172px;
     padding: 32px 0;
-    background: url('/assets/img/bg-sidebar-mobile.svg') center no-repeat;
+    background: url('./assets/img/bg-sidebar-mobile.svg') center no-repeat;
     background-size: cover;
 
     @media (width >= 980px) {
         grid-row: 1 / 3 ;
         min-height: auto;
         padding: 40px 32px;
-        background: url('/assets/img/bg-sidebar-desktop.svg') center no-repeat;
+        background: url('./assets/img/bg-sidebar-desktop.svg') center no-repeat;
         background-size: cover;
         border-radius: 10px;
     }

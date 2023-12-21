@@ -13,7 +13,6 @@ const config = {
     path: path.resolve(__dirname, 'build'),
     clean: true,
     assetModuleFilename: 'assets/[name][ext]',
-    publicPath: '/',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -53,7 +52,7 @@ const config = {
     }),
     new CopyPlugin({
       patterns: [
-        { from: path.resolve(__dirname, 'src', 'assets'), to: 'assets' },
+        { from: 'src/assets', to: 'assets' },
       ],
     }),
     new Dotenv(),
